@@ -17,13 +17,13 @@
 ## 
 ## 部分截图
 ## 登录
-<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/02.jpg" />
+<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/img/02.jpg" />
 
 ## 注册
-<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/03.jpg" />
+<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/img/03.jpg" />
 
 ## 收货地址
-<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/04.jpg" />
+<img width='300px' src="https://wjfstruggle.github.io/sell-app/static/img/04.jpg" />
 
 ### 商品页
 <img width='300px' src="https://codeyoyo.github.io/seller-app/resource/01.jpg" />
