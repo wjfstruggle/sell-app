@@ -11,6 +11,9 @@
       <li class="tab-item">
         <router-link to="seller">商家</router-link>
       </li>
+      <li class="tab-item">
+        <router-link to="login">登录</router-link>
+      </li>
     </ul>
     <router-view :seller="seller"></router-view>
   </div>
@@ -18,6 +21,7 @@
 
 <script type="text/ecmascript-6">
   import VHeader from 'components/header/header'
+  import Login from 'views/login/login'
   import 'vue-resource'
   const ERR_OK = 0
   export default {
@@ -39,7 +43,8 @@
       })
     },
     components: {
-      VHeader
+      VHeader,
+      Login
     }
   }
 </script>

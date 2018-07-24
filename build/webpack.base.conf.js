@@ -39,6 +39,7 @@ module.exports = {
       'components' : path.resolve(__dirname, '../src/components'),
       'common' : path.resolve(__dirname, '../src/common'),
       'src' : path.resolve(__dirname, '../src'),
+      'views' : path.resolve(__dirname, '../src/views'),
     }
   },
   module: {
