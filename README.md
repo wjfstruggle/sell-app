@@ -1,21 +1,22 @@
-# sell-wjf
+﻿# seller App
+*vue 2.0 练习项目，外卖App*
+## 技术栈
+> vue2 + vuex + vue-router + webpack + ES6/7
+## 项目运行
+> git clone https://github.com/codeyoyo/seller-app.git  
+> cd seller  
+> npm install  
+> npm run dev  
+## 
+## 部分截图
+### 商品页
+<img width='300px' src="https://codeyoyo.github.io/seller-app/resource/01.jpg" />
 
-> 外卖App
+### 评价页
+<img width='300px' src="https://codeyoyo.github.io/seller-app/resource/05.jpg" />
 
-## Build Setup
+### 商家页
+<img width='300px' src="https://codeyoyo.github.io/seller-app/resource/06.jpg" />
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### 注：此项目纯属个人瞎搞，只是为了进行对VUE的学习而已。
+#### PS：你的star是我学习的动力
