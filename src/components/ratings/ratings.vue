@@ -73,6 +73,7 @@
 
   const ERR_OK = 0
   const ALL = 2
+  const debug = process.env.NODE_ENV !== 'production'
 
   export default {
     props: {
@@ -88,7 +89,8 @@
       }
     },
     created() {
-      this.$http.get('/api/ratings').then((response) => {
+      const url = debug ? '/api/ratings' : 'https://github.com/wjfstruggle/sell-app/api/goods'
+      this.$http.get(url).then((response) => {
         response = response.body
         if (response.errno === ERR_OK) {
           this.ratings = response.data
