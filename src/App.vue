@@ -3,25 +3,27 @@
     <v-header :seller="seller"></v-header>
     <ul class="tab border-1px">
       <li class="tab-item">
-        <router-link to="goods">商品</router-link>
+        <router-link to="/goods">商品</router-link>
       </li>
       <li class="tab-item">
         <router-link to="/ratings">评论</router-link>
       </li>
       <li class="tab-item">
-        <router-link to="seller">商家</router-link>
+        <router-link to="/seller">商家</router-link>
       </li>
-      <li class="tab-item">
-        <router-link to="login">登录</router-link>
-      </li>
+      <!--<li class="tab-item">-->
+        <!--<router-link to="login">登录</router-link>-->
+      <!--</li>-->
     </ul>
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import VHeader from 'components/header/header'
-  import Login from 'views/login/login'
+  // import Login from 'views/login/login'
   import 'vue-resource'
   const ERR_OK = 0
   export default {
@@ -43,8 +45,8 @@
       })
     },
     components: {
-      VHeader,
-      Login
+      VHeader
+      // Login
     }
   }
 </script>

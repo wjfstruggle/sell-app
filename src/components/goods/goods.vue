@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="goods">
+      <!--左边菜单栏-->
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
           <li v-for="(item,index) in goods" :key="index" class="menu-item" :class="{'current':currentIndex===index}"
@@ -11,12 +12,14 @@
           </li>
         </ul>
       </div>
+      <!--右边商品信息栏-->
       <div class="foods-wrapper" ref="foodsWrapper">
         <ul>
           <li v-for="item in goods" class="food-list" :key="item.id" ref="foodList">
             <h1 class="title">{{item.name}}</h1>
             <ul>
-              <li @click="selectFood(food,$event)" v-for="food in item.foods" :key="food.id" class="food-item border-1px">
+              <li @click="selectFood(food,$event)" v-for="food in item.foods" :key="food.id"
+                  class="food-item border-1px">
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon">
                 </div>
@@ -30,6 +33,7 @@
                     <span class="now">￥{{food.price}}</span><span class="old"
                                                                   v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
+                  <!--购买商品按钮-->
                   <div class="cartcontrol-wrapper">
                     <cart-control :food="food">
                     </cart-control>
@@ -40,10 +44,14 @@
           </li>
         </ul>
       </div>
+      <!--底部购物车-->
       <shop-cart ref="shopcart" :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice"
-                :minPrice="seller.minPrice">
+                 :minPrice="seller.minPrice">
       </shop-cart>
     </div>
+    <!--商品详情页面-->
+    <food ref="food" :food="selectedFood">
+    </food>
   </div>
 </template>
 
@@ -51,8 +59,10 @@
   import BScroll from 'better-scroll'
   import shopCart from 'components/shopcart/shopcart'
   import CartControl from 'components/cartcontrol/cartcontrol'
+  import Food from 'components/food/food'
+
   const ERR_OK = 0
-  const debug = process.env.NODE_ENV !== 'production'
+  // const debug = process.env.NODE_ENV !== 'production'
   export default {
     props: {
       seller: {
@@ -68,6 +78,7 @@
       }
     },
     computed: {
+      // li的高度的索引
       currentIndex() {
         for (let i = 0; i < this.listHeight.length; i++) {
           let height1 = this.listHeight[i]
@@ -79,7 +90,7 @@
         }
         return 0
       },
-      selectFoods() {
+      selectFoods() { // 循环遍历，得到food数据
         let foods = []
         this.goods.forEach((good) => {
           good.foods.forEach((food) => {
@@ -93,11 +104,11 @@
     },
     created() {
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee']
-      const url = debug ? '/api/goods' : 'http://ustbhuangyi.com/sell/api/goods'
-      this.$http.get(url).then((response) => {
+      this.$http.get('/api/goods').then((response) => {
         response = response.body
         if (response.errno === ERR_OK) {
           this.goods = response.data
+          // console.log(this.goods)
           this.$nextTick(() => {
             this._initScroll()
             this._calculateHeight()
@@ -112,12 +123,14 @@
         }
         let foodList = this.$refs.foodList
         let el = foodList[index]
-        this.foodsScroll.scrollToElement(el, 300)
+        this.foodsScroll.scrollToElement(el, 300) // 点击左侧商品滚动到对应的商品详细信息
       },
+      // 进入商品详情页面
       selectFood(food, event) {
         if (!event._constructed) {
           return
         }
+        this.$refs.food.show()
         this.selectedFood = food
       },
       addFood(target) {
@@ -144,6 +157,7 @@
           }
         })
       },
+      // 获取每个li的高度
       _calculateHeight() {
         let foodList = this.$refs.foodList
         let height = 0
@@ -162,7 +176,8 @@
     },
     components: {
       shopCart,
-      CartControl
+      CartControl,
+      Food
     }
   }
 </script>
@@ -183,7 +198,7 @@
       .menu-item
         display: table
         height: 54px
-        width: 56px
+        /*width: 56px*/
         padding: 0 12px
         line-height: 14px
         &.current
